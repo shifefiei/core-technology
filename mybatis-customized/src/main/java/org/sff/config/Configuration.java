@@ -2,7 +2,7 @@ package org.sff.config;
 
 import javax.sql.DataSource;
 
-public class MyConfiguration {
+public class Configuration {
 
     private DataSource dataSource;
 

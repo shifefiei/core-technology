@@ -24,19 +24,15 @@
             <version>8.0.22</version>
         </dependency>
 
-        <!-- xml文件解析使用 -->
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
         </dependency>
-
 
     </dependencies>
 

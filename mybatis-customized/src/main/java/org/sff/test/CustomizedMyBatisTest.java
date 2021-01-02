@@ -1,7 +1,7 @@
 package org.sff.test;
 
 import org.dom4j.Document;
-import org.sff.config.MyConfiguration;
+import org.sff.config.Configuration;
 import org.sff.config.MyResources;
 import org.sff.config.XMLConfigParser;
 import org.sff.utils.DocumentUtils;
@@ -19,8 +19,9 @@ public class CustomizedMyBatisTest {
 
         //从Document中解析出Configuration,数据库连接的基本信息以及Mapper文件的信息
         XMLConfigParser parser = new XMLConfigParser();
-        MyConfiguration configuration = parser.parser(document.getRootElement());
+        Configuration configuration = parser.parser(document.getRootElement());
         System.out.println(configuration);
+
 
     }
 

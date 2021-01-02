@@ -13,16 +13,16 @@ import java.util.Properties;
 
 public class XMLConfigParser {
 
-    private MyConfiguration configuration;
+    private Configuration configuration;
 
     public XMLConfigParser() {
-        this.configuration = new MyConfiguration();
+        this.configuration = new Configuration();
     }
 
     /**
      * 解析 mybatis-config.xml 文件
      */
-    public MyConfiguration parser(Element rootElement) throws Exception {
+    public Configuration parser(Element rootElement) throws Exception {
         /**
          * 1.解析 <environments> 元素
          */
