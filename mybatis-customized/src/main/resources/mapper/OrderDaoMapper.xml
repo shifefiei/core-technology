@@ -4,7 +4,8 @@
 <mapper namespace="org.sff.dao.OrderDao">
 
     <select id="findOrder"
-            parameterType="java.util.Map"
+            parameterType="org.sff.bean.Order"
+            statementType="PREPARED"
             resultType="org.sff.bean.Order">
 
         select id as id,order_no as orderNo,order_status as orderStatus,product_name as productName

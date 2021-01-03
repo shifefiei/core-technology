@@ -30,4 +30,12 @@ public class DynamicContext {
     public String getSql() {
         return sb.toString();
     }
+
+    public Map<String, Object> getSqlParameters() {
+        return sqlParameters;
+    }
+
+    public void setSqlParameters(Map<String, Object> sqlParameters) {
+        this.sqlParameters = sqlParameters;
+    }
 }

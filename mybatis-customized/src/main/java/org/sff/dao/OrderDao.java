@@ -6,6 +6,6 @@ import java.util.Map;
 
 public interface OrderDao {
 
-    Order findOrder(Map<String, Object> map);
+    Order findOrder(Order order);
 
 }

@@ -21,12 +21,14 @@ public class MyBatisTest {
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 
         SqlSession sqlSession = factory.openSession();
-        OrderDao orderDao = sqlSession.getMapper(OrderDao.class);
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("id", 1L);
-        map.put("orderStatus", 0);
-        Order order = orderDao.findOrder(map);
+
+        Order param = new Order();
+        param.setId(1L);
+        param.setOrderStatus(0);
+
+        Order order = sqlSession.selectOne("findOrder", param);
+
         System.out.println(order);
 
     }

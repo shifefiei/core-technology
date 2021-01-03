@@ -3,6 +3,8 @@ package org.sff.config;
 import org.dom4j.Element;
 import org.sff.sqlsource.SqlSource;
 
+import java.util.HashMap;
+
 
 /**
  * mapper.xml 文件中的 select update  delete  insert 分别对应一个 statement 对象
@@ -22,20 +24,27 @@ public class XMLStatementParser {
 
         String id = element.attributeValue("id");
 
+        /**
+         * <select id="findOrder"
+         *             parameterType="java.util.Map"
+         *             statementType="PREPARED"
+         *             resultType="org.sff.bean.Order">
+         */
         String parameterType = element.attributeValue("parameterType");
         String resultType = element.attributeValue("resultType");
 
-        Class<?> parameterTypeClass = this.resolve(parameterType);
-        Class<?> resultTypeClass = this.resolve(resultType);
+        Class<?> parameterTypeClass = this.resolve(parameterType);  // java.util.Map 的对象类型
+        Class<?> resultTypeClass = this.resolve(resultType);  //org.sff.bean.Order 的对象类型
 
 
         String statementType = element.attributeValue("statementType");
-        statementType = statementType == null || statementType.equals("") ? "prepared" : statementType;
+        statementType = statementType == null || statementType.equals("") ? "PREPARED" : statementType;
 
         //element 代表了 select 标签的xml文档
         SqlSource sqlSource = this.createSqlSource(element);
 
-
+        MappedStatement statement = new MappedStatement(sqlSource, parameterTypeClass, id, statementType, resultTypeClass);
+        configuration.setMappedStatementMap(id, statement);
     }
 
     /**

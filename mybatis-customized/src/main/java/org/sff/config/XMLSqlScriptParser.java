@@ -4,16 +4,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Text;
+import org.sff.sqlnode.IfSqlNode;
 import org.sff.sqlnode.MixedSqlNode;
 import org.sff.sqlnode.SqlNode;
 import org.sff.sqlnode.TextSqlNode;
-import org.sff.sqlsource.DynamicSqlSource;
-import org.sff.sqlsource.RawSqlSource;
-import org.sff.sqlsource.SqlSource;
-import org.sff.sqlsource.StaticTextSqlNode;
+import org.sff.sqlsource.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 解析 mapper.xml 的sql脚本
@@ -25,7 +25,10 @@ public class XMLSqlScriptParser {
      */
     private boolean isDynamic = false;
 
+    Map<String, NodeHandler> map = new HashMap<>();
+
     public XMLSqlScriptParser() {
+        map.put("if", new IfNodeHandler());
     }
 
     /**
@@ -52,9 +55,7 @@ public class XMLSqlScriptParser {
         } else {
             sqlSource = new RawSqlSource(mixedSqlNode);
         }
-
-
-        return null;
+        return sqlSource;
     }
 
     /**
@@ -86,9 +87,29 @@ public class XMLSqlScriptParser {
             if (node instanceof Element) {
                 //此时说明 select 标签内部还有子标签，比如动态sql时的 <if>,<where>,<foreach>标签
                 //<if>,<where>,<foreach> 标签的解析分别在 IfSqlNode、WhereSqlNode、ForeachSqlNode 中处理
-
+                Element nodeHandlerElement = (Element) node;
+                String nodeName = nodeHandlerElement.getName().toLowerCase();
+                NodeHandler nodeHandler = map.get(nodeName);
+                nodeHandler.handleNode(nodeHandlerElement, sqlNodes);
+                isDynamic = Boolean.TRUE;
             }
         }
         return new MixedSqlNode(sqlNodes);
+    }
+
+
+    class IfNodeHandler implements NodeHandler {
+
+        @Override
+        public void handleNode(Element nodeHandlerElement, List<SqlNode> sqlNodes) {
+            //解析test标签
+            String test = nodeHandlerElement.attributeValue("test");
+            //解析 if标签，这里使用递归
+            MixedSqlNode rootSqlNode = parseDynamicTags(nodeHandlerElement); //递归 <if> 等标签
+
+            IfSqlNode ifSqlNode = new IfSqlNode(test, rootSqlNode);
+            sqlNodes.add(ifSqlNode);
+
+        }
     }
 }

@@ -22,3 +22,20 @@
 		(4).设置参数（参数值是通过接口传入的。入参信息，都是通过解析sql语句获取到的）
 		(5).执行statement
 		(6).处理结果集(要映射的结果类型是在映射文件文件中配置的)
+
+
+二、功能点分析
+    1.映射文件的解析流程
+		如何获取可执行sql语句？
+	    使用SqlSource和SqlNode进行处理。
+			(1) SqlSource: 里面封装了一个SqlNode集合(MixedSqlNode)
+			SqlSource 的作用: 提供 getBoundSql 方法，该方法返回的是已经处理完毕的sql语句，能够供 JDBC 直接执行的sql语句
+				             重点处理的是#{}，将 #{}替换成 ?
+
+			(2) SqlNode: 里面封装了是每一个sql脚本，包括文本和if、where等子标签
+			SqlNode 的作用: 通过 apply(DynamicContext context) 将${}替换为真正的值，拼接到原有的sql语句中，
+				           将动态标签解析之后的文本值，拼接到原有的sql语句中。所有 SqlNode 处理之后得到的是一个只包含#{}的sql文本，存储到 DynamicContext # StringBuilder中
+
+    2.mybatis 上层API如何调用调用JDBC方法？
+        (1)通过 SqlSessionFactory 构建 SqlSession 对象
+        (2)SqlSession 中调用 调用 Executor ，在执行器中执行jdbc查询操作
