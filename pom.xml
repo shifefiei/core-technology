@@ -12,6 +12,7 @@
     <modules>
         <module>mybatis-base-demo</module>
         <module>mybatis-customized</module>
+        <module>design-pattern</module>
     </modules>
 
     <dependencyManagement>

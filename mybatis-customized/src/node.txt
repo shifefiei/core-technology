@@ -39,3 +39,18 @@
     2.mybatis 上层API如何调用调用JDBC方法？
         (1)通过 SqlSessionFactory 构建 SqlSession 对象
         (2)SqlSession 中调用 调用 Executor ，在执行器中执行jdbc查询操作
+
+
+三、重点AP罗列
+
+    1.SqlSessionFactoryBuilder
+    2.SqlSessionFactory
+    3.Configuration
+    4.XMLConfigBuilder
+    5.XMLMapperBuilder
+    6.XMLStatementBuilder
+    7.XMLScriptBuilder
+    8.XMLScriptBuilder
+    9.MappedStatement
+    10.SqlSource
+    11.SqlNode
