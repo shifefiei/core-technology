@@ -13,6 +13,7 @@
         <module>mybatis-base-demo</module>
         <module>mybatis-customized</module>
         <module>design-pattern</module>
+        <module>concurrency-tools-practice</module>
     </modules>
 
     <dependencyManagement>
