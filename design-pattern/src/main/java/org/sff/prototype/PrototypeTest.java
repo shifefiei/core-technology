@@ -1,9 +1,9 @@
-package org.sff;
+package org.sff.prototype;
 
 import org.sff.prototype.Address;
 import org.sff.prototype.Student;
 
-public class Test {
+public class PrototypeTest {
 
     public static void main(String[] args) {
 

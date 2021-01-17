@@ -2,6 +2,9 @@ package org.sff.prototype;
 
 import java.io.*;
 
+/**
+ * 原型模式
+ */
 public class Student implements Serializable, Cloneable {
     private String name;
     private Address address;
@@ -18,7 +21,7 @@ public class Student implements Serializable, Cloneable {
 
     public Student deepCopy() throws Exception {
         /**
-         * 将对象序列化到二进制流
+         * 将对象序列化写到二进制流
          */
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(bos);
