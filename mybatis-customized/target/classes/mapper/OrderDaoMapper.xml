@@ -4,9 +4,9 @@
 <mapper namespace="org.sff.dao.OrderDao">
 
     <select id="findOrder"
-            parameterType="org.sff.bean.Order"
+            parameterType="bean.Order"
             statementType="PREPARED"
-            resultType="org.sff.bean.Order">
+            resultType="bean.Order">
 
         select id as id,order_no as orderNo,order_status as orderStatus,product_name as productName
         from product_order.order where id = #{id}

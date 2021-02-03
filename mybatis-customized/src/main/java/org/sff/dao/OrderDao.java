@@ -1,8 +1,6 @@
 package org.sff.dao;
 
-import org.sff.bean.Order;
-
-import java.util.Map;
+import bean.Order;
 
 public interface OrderDao {
 

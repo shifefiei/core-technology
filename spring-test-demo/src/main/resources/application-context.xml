@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <context:component-scan base-package="org.sff"></context:component-scan>
+
+    <context:property-placeholder location=""/>
+
+    <import resource="spring-aop.xml"/>
+
+    <bean id="user" class="org.sff.bean.User"></bean>
+
+
+    <bean id="userFactory" class="org.sff.factory.UserFactory" factory-method="getUser"></bean>
+
+    <bean id="instanceFactory" class="org.sff.factory.UserInstanceFactory"></bean>
+    <bean id="userObject" factory-bean="instanceFactory" factory-method="getUser"></bean>
+
+    <!--构造器注入-->
+    <bean id="userOne" class="org.sff.bean.User">
+        <constructor-arg name="name" value="Kate"></constructor-arg>
+    </bean>
+
+    <!--set方法注入-->
+    <bean id="userTwo" class="org.sff.bean.User">
+        <property name="name" value="Jack"></property>
+    </bean>
+
+
+    <bean id="userThree" class="org.sff.bean.User" p:name="老王"></bean>
+
+
+    <bean id="" class="" init-method="" destroy-method=""></bean>
+
+</beans>

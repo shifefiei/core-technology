@@ -28,13 +28,13 @@ public class XMLStatementParser {
          * <select id="findOrder"
          *             parameterType="java.util.Map"
          *             statementType="PREPARED"
-         *             resultType="org.sff.bean.Order">
+         *             resultType="bean.Order">
          */
         String parameterType = element.attributeValue("parameterType");
         String resultType = element.attributeValue("resultType");
 
         Class<?> parameterTypeClass = this.resolve(parameterType);  // java.util.Map 的对象类型
-        Class<?> resultTypeClass = this.resolve(resultType);  //org.sff.bean.Order 的对象类型
+        Class<?> resultTypeClass = this.resolve(resultType);  //bean.Order 的对象类型
 
 
         String statementType = element.attributeValue("statementType");

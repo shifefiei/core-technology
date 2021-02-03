@@ -1,14 +1,12 @@
 package org.sff.test;
 
-import org.sff.bean.Order;
+import bean.Order;
 import org.sff.config.MyResources;
 import org.sff.sqlsession.SqlSession;
 import org.sff.sqlsession.SqlSessionFactory;
 import org.sff.sqlsession.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CustomizedMyBatisTest {
 

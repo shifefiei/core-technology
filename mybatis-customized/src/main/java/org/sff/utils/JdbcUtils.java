@@ -1,7 +1,7 @@
 package org.sff.utils;
 
 
-import org.sff.bean.Order;
+import bean.Order;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

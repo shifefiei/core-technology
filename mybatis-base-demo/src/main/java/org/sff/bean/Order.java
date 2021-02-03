@@ -1,23 +1,19 @@
 package org.sff.bean;
 
+public class Order {
 
-import java.io.Serializable;
-
-public class Order implements Serializable {
-
-    private Long id;
-
+    private long id;
     private String orderNo;
 
     private Integer orderStatus;
 
     private String productName;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -29,14 +25,6 @@ public class Order implements Serializable {
         this.orderNo = orderNo;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
     public Integer getOrderStatus() {
         return orderStatus;
     }
@@ -45,13 +33,11 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", orderNo='" + orderNo + '\'' +
-                ", orderStatus=" + orderStatus +
-                ", productName='" + productName + '\'' +
-                '}';
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

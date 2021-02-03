@@ -5,11 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.sff.bean.Order;
-import org.sff.dao.OrderDao;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MyBatisTest {
 

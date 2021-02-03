@@ -14,7 +14,17 @@
         <module>mybatis-customized</module>
         <module>design-pattern</module>
         <module>concurrency-tools-practice</module>
+        <module>spring-test-demo</module>
+        <module>mybatis-source-master</module>
+
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.3</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
